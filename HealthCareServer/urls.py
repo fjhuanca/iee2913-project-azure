@@ -20,6 +20,7 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from .views import index_view
 
 urlpatterns = [
+    path('', index_view),
     path('admin/', admin.site.urls),
     path('index/', index_view),
     path('auth/', include('user_manage.urls')),

@@ -33,8 +33,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1',
-                 'iee2913-project.herokuapp.com']
+ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
 
 # Application definition
@@ -105,10 +104,10 @@ CHANNEL_LAYERS = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'IEE2913DB', # The Server name from 1.5
-        'USER': 'postgres', # The username from 1.6
-        'PASSWORD': 'abcd1234', # The password from installation
-        'HOST': 'localhost', # Host name/address from 1.6,
+        'NAME': os.getenv('DBNAME'), # The Server name from 1.5
+        'USER': os.getenv('DBUSER'), # The username from 1.6
+        'PASSWORD': os.getenv('DBPASS'), # The password from installation
+        'HOST': os.getenv('DBHOST'), # Host name/address from 1.6,
         'PORT': '5432' # Port from 1.6
     }
 }
