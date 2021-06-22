@@ -1,5 +1,5 @@
 
-let socket = new WebSocket('ws://localhost:8001/ws/ecg/');
+let socket = new WebSocket('ws://iee2913-g10-project.southcentralus.cloudapp.azure.com:8001/ws/ecg');
 
 socket.onopen = function(e){
     alert('Conectado Exitosamente');

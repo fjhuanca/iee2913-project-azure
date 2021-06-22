@@ -1,4 +1,4 @@
-let socket_signs = new WebSocket('ws://localhost:8001/ws/signs/');
+let socket_signs = new WebSocket('ws://iee2913-g10-project.southcentralus.cloudapp.azure.com:8001/ws/signs');
 
 // socket.onopen = function(e){
 //     alert('Conectado Exitosamente');
