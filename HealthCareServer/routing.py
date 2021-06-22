@@ -6,7 +6,8 @@ import django
 django.setup()
 
 websocket_urlPatter = [
-    path('ws/polData/', consumer.DashConsumer.as_asgi()),
+    path('ws/ecg/', consumer.ECGConsumer.as_asgi()),
+    path('ws/signs/', consumer.SignsConsumer.as_asgi()),
 ]
 application = ProtocolTypeRouter({
     'websocket' :AuthMiddlewareStack(URLRouter(websocket_urlPatter))
