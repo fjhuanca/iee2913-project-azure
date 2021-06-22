@@ -31,7 +31,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ['DEBUG']
 
 ALLOWED_HOSTS = [os.environ['WEBSITE_HOSTNAME']] if 'WEBSITE_HOSTNAME' in os.environ else []
 
@@ -153,7 +153,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = 'staticfiles'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),
-                    os.path.join(BASE_DIR, 'HealthCareServer', 'static'))
+                    #os.path.join(BASE_DIR, 'HealthCareServer', 'static'),
+                    )
 # STATICFILES_DIRS = [
 #     BASE_DIR / "static",
 #     '/var/www/static/',

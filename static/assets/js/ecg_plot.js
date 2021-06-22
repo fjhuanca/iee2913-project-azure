@@ -22,10 +22,10 @@ socket.onclose = function(e){
 var dataObj = {
     type: 'line',
     data: {
-        labels: [...Array(50).keys()],
+        labels: [...(Array(50).fill('')).values()],
         datasets: [{
             label: 'ECG 2 canales',
-            data: [...Array(50).keys()],
+            data: [...(Array(50).fill(0)).values()],
             backgroundColor: ['rgba(255, 99, 132, 0.5)', ],
             borderColor: ['rgba(255, 99, 132, 1)', ],
             borderWidth: 1
