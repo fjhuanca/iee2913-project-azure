@@ -1,6 +1,6 @@
 let socket_signs = new WebSocket(
     (window.location.protocol == 'https:' ? 'wss://' : 'ws://')
-    + 'iee2913-g10-project.southcentralus.cloudapp.azure.com:8001/ws/signs');
+    + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/signs');
 
 // socket.onopen = function(e){
 //     alert('Conectado Exitosamente');
