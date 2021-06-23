@@ -1,5 +1,7 @@
 
-let socket = new WebSocket('wss://iee2913-g10-project.southcentralus.cloudapp.azure.com:8001/ws/ecg');
+let socket = new WebSocket(
+    (window.location.protocol == 'https:' ? 'wss://' : 'ws://')
+        + 'iee2913-g10-project.southcentralus.cloudapp.azure.com:8001/ws/ecg');
 
 socket.onopen = function(e){
     alert('Conectado Exitosamente');

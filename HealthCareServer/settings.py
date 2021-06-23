@@ -94,23 +94,23 @@ CHANNEL_LAYERS = {
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('DBNAME'), # The Server name from 1.5
-        'USER': os.getenv('DBUSER'), # The username from 1.6
-        'PASSWORD': os.getenv('DBPASS'), # The password from installation
-        'HOST': os.getenv('DBHOST'), # Host name/address from 1.6,
-        'PORT': '5432' # Port from 1.6
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.getenv('DBNAME'), # The Server name from 1.5
+#         'USER': os.getenv('DBUSER'), # The username from 1.6
+#         'PASSWORD': os.getenv('DBPASS'), # The password from installation
+#         'HOST': os.getenv('DBHOST'), # Host name/address from 1.6,
+#         'PORT': '5432' # Port from 1.6
+#     }
+# }
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
