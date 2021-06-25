@@ -6,8 +6,12 @@ import django
 django.setup()
 
 websocket_urlPatter = [
-    path('wss/ecg/', consumer.ECGConsumer.as_asgi()),
-    path('wss/signs/', consumer.SignsConsumer.as_asgi()),
+    path('wss/receiver/ecg/', consumer.ECGConsumerReceiver.as_asgi()),
+    path('wss/sender/ecg/', consumer.ECGConsumerSender.as_asgi()),
+    path('wss/receiver/signs/', consumer.SignsConsumerReceiver.as_asgi()),
+    path('wss/sender/signs/', consumer.SignsConsumerSender.as_asgi()),
+    path('wss/receiver/cam/', consumer.CamConsumerReceiver.as_asgi()),    
+    path('wss/sender/cam/', consumer.CamConsumerSender.as_asgi()),
 ]
 application = ProtocolTypeRouter({
     'websocket' :AuthMiddlewareStack(URLRouter(websocket_urlPatter))

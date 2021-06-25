@@ -1,9 +1,32 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
+import asyncio
 
-class ECGConsumer(AsyncWebsocketConsumer):
+class ECGConsumerSender(AsyncWebsocketConsumer):
     
-    groupname = 'ecg'
+    groupname = 'ecg_sender'
+    async def connect(self):
+        await self.channel_layer.group_add(
+            self.groupname,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # await self.disconnect()
+        pass
+
+    async def receive(self, text_data):
+        pass
+
+    async def deprocessing(self, event):
+        valOther = event['value']
+        await self.send(text_data=json.dumps({'value': valOther}))
+
+
+class ECGConsumerReceiver(AsyncWebsocketConsumer):
+    
+    groupname = 'ecg_receiver'
     async def connect(self):
         await self.channel_layer.group_add(
             self.groupname,
@@ -20,7 +43,7 @@ class ECGConsumer(AsyncWebsocketConsumer):
         val = datapoint['value']
         
         await self.channel_layer.group_send(
-            self.groupname,
+            "ecg_sender",
             {
                 'type': 'deprocessing',
                 'value': val
@@ -29,10 +52,34 @@ class ECGConsumer(AsyncWebsocketConsumer):
         # print('>>>', text_data)
 
     async def deprocessing(self, event):
-        valOther = event['value']
-        await self.send(text_data=json.dumps({'value': valOther}))
+        pass
 
-class SignsConsumer(AsyncWebsocketConsumer):
+
+class SignsConsumerSender(AsyncWebsocketConsumer):
+    
+    groupname = 'signs'
+    async def connect(self):
+        await self.channel_layer.group_add(
+            self.groupname,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # await self.disconnect()
+        pass
+
+    async def receive(self, text_data):
+        pass
+
+    async def deprocessing(self, event):
+        # valOther = event['value']
+        new_dict = {k : v for k,v in event.items() if k!='type'}
+        # print(new_dict)
+        await self.send(text_data=json.dumps(new_dict))
+
+
+class SignsConsumerReceiver(AsyncWebsocketConsumer):
     
     groupname = 'signs'
     async def connect(self):
@@ -54,7 +101,7 @@ class SignsConsumer(AsyncWebsocketConsumer):
         bpm = datapoint['bpm']
         
         await self.channel_layer.group_send(
-            self.groupname,
+            "ecg_sender",
             {
                 'type': 'deprocessing',
                 'temp': temp,
@@ -66,7 +113,58 @@ class SignsConsumer(AsyncWebsocketConsumer):
         # print('>>>', text_data)
 
     async def deprocessing(self, event):
+        pass
+
+
+
+class CamConsumerReceiver(AsyncWebsocketConsumer):
+    
+    groupname = 'cam'
+    async def connect(self):
+        await self.channel_layer.group_add(
+            self.groupname,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # await self.disconnect()
+        pass
+
+    async def receive(self, bytes_data):
+        
+        await self.channel_layer.group_send(
+            "cam2",
+            {
+                'type': 'deprocessing',
+                'bytes': bytes_data
+            }
+        )
+        # print('>>>', text_data)
+        
+
+    async def deprocessing(self, event):
+        pass
+
+
+class CamConsumerSender(AsyncWebsocketConsumer):
+    
+    groupname = 'cam2'
+    async def connect(self):
+        await self.channel_layer.group_add(
+            self.groupname,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # await self.disconnect()
+        pass
+
+    async def receive(self, bytes_data):
+        pass
+        
+    async def deprocessing(self, event):
         # valOther = event['value']
-        new_dict = {k : v for k,v in event.items() if k!='type'}
         # print(new_dict)
-        await self.send(text_data=json.dumps(new_dict))
+        await self.send(bytes_data=event["bytes"])
