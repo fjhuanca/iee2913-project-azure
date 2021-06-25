@@ -57,7 +57,7 @@ class ECGConsumerReceiver(AsyncWebsocketConsumer):
 
 class SignsConsumerSender(AsyncWebsocketConsumer):
     
-    groupname = 'signs'
+    groupname = 'signs_sender'
     async def connect(self):
         await self.channel_layer.group_add(
             self.groupname,
@@ -81,7 +81,7 @@ class SignsConsumerSender(AsyncWebsocketConsumer):
 
 class SignsConsumerReceiver(AsyncWebsocketConsumer):
     
-    groupname = 'signs'
+    groupname = 'signs_receiver'
     async def connect(self):
         await self.channel_layer.group_add(
             self.groupname,
@@ -101,7 +101,7 @@ class SignsConsumerReceiver(AsyncWebsocketConsumer):
         bpm = datapoint['bpm']
         
         await self.channel_layer.group_send(
-            "ecg_sender",
+            "signs_sender",
             {
                 'type': 'deprocessing',
                 'temp': temp,
@@ -114,7 +114,6 @@ class SignsConsumerReceiver(AsyncWebsocketConsumer):
 
     async def deprocessing(self, event):
         pass
-
 
 
 class CamConsumerReceiver(AsyncWebsocketConsumer):
