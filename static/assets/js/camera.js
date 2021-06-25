@@ -14,7 +14,9 @@ jQuery(function($){
             socket.onopen = function(){alert("conectado");}
             socket.onmessage = function(msg){
                 // alert("recibiendo");
-                var bytes = new Uint8Array(msg.data);
+                var recData = JSON.parse(msg.data);
+                var bytes = _base64ToArrayBuffer(recData.bytes);
+                console.log(bytes);
                 var binary= '';
                 var len = bytes.byteLength;
                 for (var i = 0; i < len; i++) {
@@ -30,3 +32,13 @@ jQuery(function($){
     }
 }
 );
+
+function _base64ToArrayBuffer(base64) {
+    var binary_string = window.atob(base64);
+    var len = binary_string.length;
+    var bytes = new Uint8Array(len);
+    for (var i = 0; i < len; i++) {
+        bytes[i] = binary_string.charCodeAt(i);
+    }
+    return bytes;
+}
