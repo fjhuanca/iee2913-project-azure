@@ -8,6 +8,10 @@ from django.forms.models import model_to_dict
 def MessagesJsons(request):
     data = Messages.objects.all()
     data = [model_to_dict(d) for d in data]
-    return JsonResponse(data, safe=False)
+    n = len(data)
+    dic = {"n": n}
+    for i in range(n):
+        dic[i] = data[i]["message_text"]
+    return JsonResponse(dic, safe=False)
 
 
