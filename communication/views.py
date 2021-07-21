@@ -20,16 +20,19 @@ def MessagesJsons(request):
 def CreateDrugRecord(request):
     status = False
     if request.method == "POST":
-        body_unicode = request.body.decode('utf-8')
-        body_data = json.loads(body_unicode)
-        campo = datetime.datetime.today()
-        hour, minute = body_data["time"].split(":")
-        hour = int(hour)
-        minute = int(minute)
-        campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
-        record = DrugRecords(time=campo)
-        record.save()
-        status = True
+        try:
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            campo = datetime.datetime.today()
+            hour, minute = body_data["time"].split(":")
+            hour = int(hour)
+            minute = int(minute)
+            campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            record = DrugRecords(time=campo)
+            record.save()
+            status = True
+        except:
+            status = False
     return JsonResponse({"success": status}, safe=False)
 
 
