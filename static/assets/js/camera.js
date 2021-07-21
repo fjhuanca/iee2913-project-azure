@@ -7,7 +7,7 @@ jQuery(function($){
     }
     function setup(){
         var host = (window.location.protocol == 'https:' ? 'wss://' : 'wss://') + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/sender/cam/';
-        // var host = 'ws://localhost:8001/wss/sender/cam/'
+        // var host = 'ws://localhost:8000/wss/sender/cam/'
         var socket = new WebSocket(host);
         socket.binaryType = 'arraybuffer';
         if(socket){

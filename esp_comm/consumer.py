@@ -131,13 +131,13 @@ class CamConsumerReceiver(AsyncWebsocketConsumer):
         # await self.disconnect()
         pass
 
-    async def receive(self, bytes_data):
-        
+    async def receive(self, text_data):
+        # b = json.loads(text_data)["bytes"]
         await self.channel_layer.group_send(
             "cam2",
             {
                 'type': 'deprocessing',
-                'bytes': bytes_data
+                'bytes': text_data
             }
         )
         # print('>>>', text_data)
@@ -167,8 +167,10 @@ class CamConsumerSender(AsyncWebsocketConsumer):
     async def deprocessing(self, event):
         new_dict = {k : v for k,v in event.items() if k!='type'}
         # print(new_dict)
-        ENCODING = 'utf-8'
-        base64_bytes = b64encode(new_dict["bytes"])
-        base64_string = base64_bytes.decode(ENCODING)
-        new_dict["bytes"] = base64_string
+        ENCODING = 'ascii'
+        # base64_bytes = b64encode(new_dict["bytes"])
+        base64_bytes = new_dict["bytes"]
+        # base64_string = base64_bytes.decode(ENCODING)
+        # new_dict["bytes"] = base64_string
+        new_dict["bytes"] = base64_bytes
         await self.send(text_data=json.dumps(new_dict))
