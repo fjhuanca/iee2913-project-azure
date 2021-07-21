@@ -140,7 +140,7 @@ class CamConsumerReceiver(AsyncWebsocketConsumer):
                 'bytes': text_data
             }
         )
-        # print('>>>', text_data)
+        print('>>>', text_data)
         
 
     async def deprocessing(self, event):
