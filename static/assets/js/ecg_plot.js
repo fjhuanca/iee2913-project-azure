@@ -1,6 +1,6 @@
 
 let socket = new WebSocket(
-    (window.location.protocol == 'https:' ? 'wss://' : 'ws://')
+    (window.location.protocol == 'https:' ? 'wss://' : 'wss://')
         + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/sender/ecg/');
 
 socket.onopen = function(e){

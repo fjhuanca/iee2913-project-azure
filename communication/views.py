@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Messages, DrugRecords
+from .models import Messages, DrugRecords, EvacuationRecords, FoodRecords
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
@@ -20,7 +20,7 @@ def MessagesJsons(request):
 def CreateDrugRecord(request):
     status = False
     if request.method == "POST":
-        # try:
+        try:
             body_unicode = request.body.decode('utf-8')
             body_data = json.loads(body_unicode)
             campo = datetime.datetime.today()
@@ -31,8 +31,46 @@ def CreateDrugRecord(request):
             record = DrugRecords(time=campo)
             record.save()
             status = True
-        # except:
-        #     status = False
+        except:
+            status = False
+    return JsonResponse({"success": status}, safe=False)
+
+@csrf_exempt
+def CreateFoodRecord(request):
+    status = False
+    if request.method == "POST":
+        try:
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            campo = datetime.datetime.today()
+            hour, minute = body_data["time"].split(":")
+            hour = int(hour)
+            minute = int(minute)
+            campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            record = FoodRecords(time=campo)
+            record.save()
+            status = True
+        except:
+            status = False
+    return JsonResponse({"success": status}, safe=False)
+
+@csrf_exempt
+def CreateEvacuationRecord(request):
+    status = False
+    if request.method == "POST":
+        try:
+            body_unicode = request.body.decode('utf-8')
+            body_data = json.loads(body_unicode)
+            campo = datetime.datetime.today()
+            hour, minute = body_data["time"].split(":")
+            hour = int(hour)
+            minute = int(minute)
+            campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
+            record = EvacuationRecords(time=campo)
+            record.save()
+            status = True
+        except:
+            status = False
     return JsonResponse({"success": status}, safe=False)
 
 

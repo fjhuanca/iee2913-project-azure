@@ -41,19 +41,13 @@
           </a>
         </li>
         <li class="nav-item {% if 'transactions' in segment %} active {% endif %}">
-          <a href="/transactions.html" class="nav-link">
+          <a href="/registro_medicamentos" class="nav-link">
             <span class="sidebar-icon"><span class="fas fa-hand-holding-usd"></span></span>
             <span class="sidebar-text">Registro de Medicamentos</span>
           </a>
         </li>
-        <li class="nav-item {% if 'settings' in segment %} active {% endif %}">
-          <a href="/settings.html" class="nav-link">
-            <span class="sidebar-icon"><span class="fas fa-cog"></span></span>
-            <span class="sidebar-text">Configuraciones</span>
-          </a>
-        </li>
         <li class="nav-item {% if 'bootstrap-tables' in segment %} active {% endif %}">
-          <span
+          <a href="/registro_comidas"
             class="nav-link  collapsed  d-flex justify-content-between align-items-center"
             data-bs-toggle="collapse" data-bs-target="#submenu-app">
             <span>
@@ -62,7 +56,7 @@
             </span>
             <span class="link-arrow">
               <!-- <span class="fas fa-chevron-right"></span> -->
-            </span>
+            </a>
           </span>
           <!-- <div class="multi-level collapse "
             role="list" id="submenu-app" aria-expanded="false">
@@ -76,17 +70,18 @@
           </div> -->
         </li>
         <li class="nav-item">
-          <span
+          <a href="/registro_evacuaciones"
             class="nav-link  collapsed  d-flex justify-content-between align-items-center"
             data-bs-toggle="collapse" data-bs-target="#submenu-pages">
             <span>
-              <span class="sidebar-icon"><span class="far fa-file-alt"></span></span>
-              <span class="sidebar-text">Órdenes Médicas</span>
+              <span class="sidebar-icon"><span class="fas fa-box-open"></span></span>
+              <span class="sidebar-text">Registro de Evacuaciones</span>
             </span>
             <span class="link-arrow">
               <!-- <span class="fas fa-chevron-right"></span> -->
             </span>
-          </span>
+          </a>
+          
           <!-- <div class="multi-level collapse " role="list"
             id="submenu-pages" aria-expanded="false">
             <ul class="flex-column nav">
@@ -129,17 +124,17 @@
           </div> -->
         </li>
         <li class="nav-item {% if 'ui-' in segment %} active {% endif %}">
-          <span
+          <a href="/messages"
             class="nav-link  collapsed  d-flex justify-content-between align-items-center"
             data-bs-toggle="collapse" data-bs-target="#submenu-components">
             <span>
-              <span class="sidebar-icon"><span class="fas fa-box-open"></span></span>
-              <span class="sidebar-text">Mensajes y Errores</span>
+              <span class="sidebar-icon"><span class="far fa-file-alt"></span></span>
+              <span class="sidebar-text">Mensajes</span>
             </span>
             <span class="link-arrow">
               <!-- <span class="fas fa-chevron-right"></span> -->
             </span>
-          </span>
+          </a>
           <!-- <div class="multi-level collapse " role="list"
             id="submenu-components" aria-expanded="false">
             <ul class="flex-column nav">
