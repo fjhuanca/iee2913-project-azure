@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'user_manage',
     'monitoring',
+    'communication'
 ]
 
 MIDDLEWARE = [

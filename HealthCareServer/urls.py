@@ -24,5 +24,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', index_view),
     path('auth/', include('user_manage.urls')),
-    path('', include('monitoring.urls'))
+    path('', include('monitoring.urls')),
+    path('comm/', include('communication.urls')),
 ] + staticfiles_urlpatterns()
