@@ -38,116 +38,22 @@
             <div class="card bg-secondary-alt shadow-sm">
                 <div class="card-header d-sm-flex flex-row align-items-center flex-0">
                     <div class="d-block mb-3 mb-sm-0">
-                        <div class="h5 fw-normal mb-2">Electrocardiograma</div>
-                        <h2 class="h3", id="bpm_inst">0 (LPM)</h2>
-                        <div class="small mt-2"> 
-                            <span class="fw-bold me-2">Estado:</span>                              
-                            <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                            <span class="text-success fw-bold">Monitoreando</span>
-                        </div>
-                    </div>
-                    <!-- <div class="d-flex ms-auto">
+                        <div class="h5 fw-normal mb-2">Test de Pupila:</div>
+                        <h2 class="h3", id="bpm_inst"></h2>
+                        
+                        <img id='live' src=''>
+                        <!-- <div class="d-flex ms-auto">
                         <a href="#" class="btn btn-secondary text-dark btn-sm me-2">Month</a>
                         <a href="#" class="btn btn-dark btn-sm me-3">Week</a>
                     </div> -->
                 </div>
                 <div class="card-body p-2">
                     <!-- <div class="ct-chart-sales-value ct-double-octave ct-series-g"></div> -->
-                    <img id='live' src=''>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-sm-6 col-xl-4 mb-4">
-            <div class="card border-light shadow-sm">
-                <div class="card-body">
-                    <div class="row d-block d-xl-flex align-items-center">
-                        <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                            <div class="icon icon-shape icon-md icon-shape-primary rounded me-4 me-sm-0">
-                                <!-- <span class="fas fa-chart-line"></span> -->
-                            </div>
-                            <!-- <div class="d-sm-none">
-                                <h2 class="h5">Customers</h2>
-                                <h3 class="mb-1">345,678</h3>
-                            </div> -->
-                        </div>
-                        <div class="col-12 col-xl-7 px-xl-0">
-                            <div class="d-none d-sm-block">
-                                <h2 class="h5">Temperatura</h2>
-                                <h3 class="mb-1", id="temp_inst">0°C</h3>
-                            </div>
-                            <small>Promedio Último Minuto:
-                                <!-- <span class="icon icon-small">
-                                <span class="fas fa-globe-europe"></span></span>  -->
-                                </small> 
-                            <div class="small mt-2">                               
-                                <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                                <span class="text-success fw-bold">0°C</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-4 mb-4">
-            <div class="card border-light shadow-sm">
-                <div class="card-body">
-                    <div class="row d-block d-xl-flex align-items-center">
-                        <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                            <div class="icon icon-shape icon-md icon-shape-secondary rounded me-4">
-                                <!-- <span class="fas fa-cash-register"></span> -->
-                            </div>
-                            <!-- <div class="d-sm-none">
-                                <h2 class="h5">Revenue</h2>
-                                <h3 class="mb-1">$43,594</h3>
-                            </div> -->
-                        </div>
-                        <div class="col-12 col-xl-7 px-xl-0">
-                            <div class="d-none d-sm-block">
-                                <h2 class="h5">Saturación</h2>
-                                <h3 class="mb-1", id="spo_inst">0%</h3>
-                            </div>
-                            <small>Promedio  
-                                <!-- <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span>  -->
-                                Último Minuto:</small>
-                            <div class="small mt-2">                               
-                                <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                                <span class="text-success fw-bold">0%</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-sm-6 col-xl-4 mb-4">
-            <div class="card border-light shadow-sm">
-                <div class="card-body">
-                    <div class="row d-block d-xl-flex align-items-center">
-                        <div class="col-12 col-xl-5 text-xl-center mb-3 mb-xl-0 d-flex align-items-center justify-content-xl-center">
-                            <div class="icon icon-shape icon-md icon-shape-tertiary rounded me-4 me-sm-0"></div>
-                            <!-- <div class="ct-chart-traffic-share ct-golden-section ct-series-a"></div> -->
-                        </div>
-                        <div class="col-12 col-xl-7 px-xl-0">
-                            <!-- <h2 class="h5 mb-3">Traffic Share</h2> -->
-                            <!-- <h6 class="fw-normal text-gray"><span class="icon w-20 icon-xs icon-secondary me-1"><span class="fas fa-desktop"></span></span> Desktop <a href="#" class="h6">60%</a></h6>
-                            <h6 class="fw-normal text-gray"><span class="icon w-20 icon-xs icon-primary me-1"><span class="fas fa-mobile-alt"></span></span> Mobile Web <a href="#" class="h6">30%</a></h6>
-                            <h6 class="fw-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary me-1"><span class="fas fa-tablet-alt"></span></span> Tablet Web <a href="#" class="h6">10%</a></h6> -->
-                                <div class="d-none d-sm-block">
-                                    <h2 class="h5">Frec. Respiratoria</h2>
-                                    <h3 class="mb-1", id="bf_inst">0 BPM</h3>
-                                </div>
-                                <small>Promedio  
-                                    <!-- <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span>  -->
-                                    Último Minuto:</small>
-                                <div class="small mt-2">                               
-                                    <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                                    <span class="text-success fw-bold">0</span>
-                                </div>
-                        
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+       
+
     </div>
    
 
