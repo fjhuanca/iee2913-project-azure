@@ -1,14 +1,16 @@
 from django.shortcuts import render, redirect
-from .models import Messages, DrugRecords, EvacuationRecords, FoodRecords
+from .models import Message, DrugRecord, EvacuationRecord, FoodRecord, Audio
+from .forms import AudioForm
 from django.http import JsonResponse
 from django.forms.models import model_to_dict
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
 import json
 import datetime
+import mutagen
 
 # Create your views here.
 def MessagesJsons(request):
-    data = Messages.objects.all()
+    data = Message.objects.all()
     data = [model_to_dict(d) for d in data]
     n = len(data)
     dic = {"n": n}
@@ -28,7 +30,7 @@ def CreateDrugRecord(request):
             hour = int(hour)
             minute = int(minute)
             campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
-            record = DrugRecords(time=campo)
+            record = DrugRecord(time=campo)
             record.save()
             status = True
         except:
@@ -47,7 +49,7 @@ def CreateFoodRecord(request):
             hour = int(hour)
             minute = int(minute)
             campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
-            record = FoodRecords(time=campo)
+            record = FoodRecord(time=campo)
             record.save()
             status = True
         except:
@@ -66,7 +68,7 @@ def CreateEvacuationRecord(request):
             hour = int(hour)
             minute = int(minute)
             campo = campo.replace(hour=hour, minute=minute, second=0, microsecond=0)
-            record = EvacuationRecords(time=campo)
+            record = EvacuationRecord(time=campo)
             record.save()
             status = True
         except:
@@ -74,3 +76,15 @@ def CreateEvacuationRecord(request):
     return JsonResponse({"success": status}, safe=False)
 
 
+@csrf_exempt
+def CreateVoiceNote(request):
+    status = False
+    if request.method == "POST":
+        audio_form = AudioForm(request.POST, request.FILES)
+        if audio_form.is_valid():
+            audio = audio_form.save(commit=False)
+            audio_info = mutagen.File(request.FILES['audio']).info
+            audio.length = round(audio_info.length)
+            audio.save()
+            return redirect('messages')
+    return JsonResponse({"success": status}, safe=False)

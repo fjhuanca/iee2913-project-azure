@@ -15,6 +15,7 @@ gunicorn = "*"
 django-heroku = "*"
 daphne = "*"
 psycopg2 = "*"
+mutagen = "*"
 
 [dev-packages]
 
