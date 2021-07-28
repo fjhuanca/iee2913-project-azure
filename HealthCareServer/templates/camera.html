@@ -12,6 +12,9 @@
         <title> WebSockets Client</title>
         <script src='https://code.jquery.com/jquery-1.9.1.min.js'></script>
         <script src= {% static 'assets/js/camera.js' %}></script>
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script src= {% static 'assets/js/led_on_off.js' %}></script>
     </head>
     
     
@@ -38,10 +41,21 @@
             <div class="card bg-secondary-alt shadow-sm">
                 <div class="card-header d-sm-flex flex-row align-items-center flex-0">
                     <div class="d-block mb-3 mb-sm-0">
-                        <div class="h5 fw-normal mb-2">Test de Pupila:</div>
-                        <h2 class="h3", id="bpm_inst"></h2>
-                        
+                        <h2 class="h3", id="bpm_inst"> Test de Pupila:</h2>
+                        <div class="h5 fw-normal mb-2">Estado Luz:</div>
+                        <label class="checkbox">
+                            <input id="toggle" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="danger" data-on="Encendida" data-off="Apagada">
+                        </label>
                         <img id='live' src=''>
+                        <script>
+                            $(function() {
+                              $('#toggle').bootstrapToggle({
+                                on: 'Encendida',
+                                off: 'Apagada'
+                              });
+                            })
+                          startLedSocket()
+                        </script>
                         <!-- <div class="d-flex ms-auto">
                         <a href="#" class="btn btn-secondary text-dark btn-sm me-2">Month</a>
                         <a href="#" class="btn btn-dark btn-sm me-3">Week</a>

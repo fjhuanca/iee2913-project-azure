@@ -12,6 +12,8 @@ websocket_urlPatter = [
     path('wss/sender/signs/', consumer.SignsConsumerSender.as_asgi()),
     path('wss/receiver/cam/', consumer.CamConsumerReceiver.as_asgi()),    
     path('wss/sender/cam/', consumer.CamConsumerSender.as_asgi()),
+    path('wss/receiver/led/', consumer.LedConsumerReceiver.as_asgi()),
+    path('wss/sender/led/', consumer.LedConsumerSender.as_asgi()),
 ]
 application = ProtocolTypeRouter({
     'websocket' :AuthMiddlewareStack(URLRouter(websocket_urlPatter))

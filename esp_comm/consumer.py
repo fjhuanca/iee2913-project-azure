@@ -174,3 +174,55 @@ class CamConsumerSender(AsyncWebsocketConsumer):
         # new_dict["bytes"] = base64_string
         new_dict["bytes"] = base64_bytes
         await self.send(text_data=json.dumps(new_dict))
+
+class LedConsumerSender(AsyncWebsocketConsumer):
+    
+    groupname = 'led_sender'
+    async def connect(self):
+        await self.channel_layer.group_add(
+            self.groupname,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # await self.disconnect()
+        pass
+
+    async def receive(self, text_data):
+        pass
+
+    async def deprocessing(self, event):
+        valOther = event['status']
+        await self.send(text_data=str(valOther))
+
+
+class LedConsumerReceiver(AsyncWebsocketConsumer):
+    
+    groupname = 'led_receiver'
+    async def connect(self):
+        await self.channel_layer.group_add(
+            self.groupname,
+            self.channel_name
+        )
+        await self.accept()
+
+    async def disconnect(self, close_code):
+        # await self.disconnect()
+        pass
+
+    async def receive(self, text_data):
+        datapoint = json.loads(text_data)
+        val = datapoint['status']
+        
+        await self.channel_layer.group_send(
+            "led_sender",
+            {
+                'type': 'deprocessing',
+                'status': val
+            }
+        )
+        # print('>>>', text_data)
+
+    async def deprocessing(self, event):
+        pass
