@@ -80,8 +80,6 @@ def CreateEvacuationRecord(request):
 def CreateVoiceNote(request):
     status = False
     if request.method == "POST":
-        print(request.POST)
-        print(request.FILES)
         audio_form = AudioForm(request.POST, request.FILES)
         if audio_form.is_valid():
             audio = audio_form.save(commit=False)

@@ -65,7 +65,6 @@ def audio_form_test(request):
 
 def audio_player(request):
         audios = reversed(Audio.objects.all())
-        print(timezone.get_current_timezone())
         base_url =  "{0}://{1}{2}".format(request.scheme, request.get_host(),"")
         lista = [AudioInTemplate(base_url, audio) for audio in audios]
         context = {'audio_list': lista}
