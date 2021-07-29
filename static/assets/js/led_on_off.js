@@ -1,8 +1,5 @@
-function startLedSocket(){
-    $('#toggle').bootstrapToggle("off")
     
     console.log("ready");
-    alert("ready");
     // let socket2 = new WebSocket(
     //     (window.location.protocol == 'https:' ? 'ws://' : 'ws://')
     //     + 'localhost:8000/wss/receiver/led/');
@@ -28,4 +25,3 @@ function startLedSocket(){
         if (socket2.status) socket2.send(JSON.stringify({status: val}));
         // console.log("here");
     };
-}
