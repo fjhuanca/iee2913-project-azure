@@ -15,8 +15,9 @@
         // console.log(e.data);
         var recData = e.data;
         isOn = parseInt(e.data);
-        if (isOn) $('#toggle').bootstrapToggle("on");
-        else $('#toggle').bootstrapToggle("off");
+        val =  ($('#toggle').prop('checked')) ? 1: 0;
+        if (isOn && isOn != val) $('#toggle').bootstrapToggle("on");
+        else if(!isOn && (isOn != val)) $('#toggle').bootstrapToggle("off");
     };
             // Send to Everyone on channel test123
     const checkbox = document.getElementById("toggle");
