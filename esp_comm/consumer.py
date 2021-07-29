@@ -223,13 +223,9 @@ class CamConsumerSender(AsyncWebsocketConsumer):
         pass
         
     async def deprocessing(self, event):
-        new_dict = {k : v for k,v in event.items() if k!='type'}
+        # valOther = event['value']
         # print(new_dict)
-        ENCODING = 'utf-8'
-        base64_bytes = b64encode(new_dict["bytes"])
-        base64_string = base64_bytes.decode(ENCODING)
-        new_dict["bytes"] = base64_string
-        await self.send(text_data=json.dumps(new_dict))
+        await self.send(bytes_data=event["bytes"])
 
 class LedConsumerSender(AsyncWebsocketConsumer):
     
