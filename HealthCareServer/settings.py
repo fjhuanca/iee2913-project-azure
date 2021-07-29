@@ -151,8 +151,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = 'static/'
-STATIC_ROOT = 'static'
+STATIC_URL = '/static/'
+STATIC_ROOT = "static"
 # STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),
                     #os.path.join(BASE_DIR, 'HealthCareServer', 'static'),
                     # )
@@ -160,7 +160,7 @@ STATIC_ROOT = 'static'
 #     BASE_DIR / "static",
 #     '/var/www/static/',
 # ]
-MEDIA_URL = "media/"
+MEDIA_URL = "/media/"
 MEDIA_ROOT = "mediafiles"
 
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
