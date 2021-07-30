@@ -39,9 +39,9 @@ def auto_delete_file_on_delete(sender, instance, **kwargs):
     Deletes file from filesystem
     when corresponding `Audio` object is deleted.
     """
-    if instance.file:
-        if os.path.isfile(instance.file.path):
-            os.remove(instance.file.path)
+    if instance.audio:
+        if os.path.isfile(instance.audio.path):
+            os.remove(instance.audio.path)
 
 @receiver(models.signals.pre_save, sender=Audio)
 def auto_delete_file_on_change(sender, instance, **kwargs):
@@ -58,7 +58,7 @@ def auto_delete_file_on_change(sender, instance, **kwargs):
     except Audio.DoesNotExist:
         return False
 
-    new_file = instance.file
+    new_file = instance.audio
     if not old_file == new_file:
         if os.path.isfile(old_file.path):
             os.remove(old_file.path)

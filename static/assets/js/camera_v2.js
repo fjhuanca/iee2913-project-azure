@@ -23,6 +23,7 @@ jQuery(function($){
                 // alert("recibiendo");
                 // var recData = JSON.parse(msg.data);
                 // bytes = _base64ToArrayBuffer(recData.bytes);
+                console.log(msg);
                 bytes = new Uint8Array(msg.data);
                 // console.log(bytes);
                 // var binary= '';
@@ -34,11 +35,13 @@ jQuery(function($){
                     receiving = true;
                     // console.log("here1");
                 }
-                else if (len==1 && bytes[0]==endflag){
+                else if (len==1 && bytes[0]==endflag && receiving){
                     // console.log("here3")
                     receiving = false;
                     var img = document.getElementById('live');
                     img.src = 'data:image/jpg;base64,'+window.btoa(binary);
+                    img.style.width = '40%'
+                    img.style.height = '40%'
                 }
                 else if (receiving){
                     for (var i = 0; i < len; i++) {
