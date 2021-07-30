@@ -1,4 +1,4 @@
-    
+    $('#toggle').bootstrapToggle("off")    
     console.log("ready");
     // let socket2 = new WebSocket(
     //     (window.location.protocol == 'https:' ? 'ws://' : 'ws://')
