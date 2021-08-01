@@ -12,7 +12,7 @@ def upload_root_gen(instance, filename):
 
 # Create your models here.
 class Message(models.Model):
-    message_text = models.CharField(max_length=20)
+    message_text = models.CharField(max_length=40)
     created_date = models.DateTimeField(default=now, editable=False)
 
 class DrugRecord(models.Model):
