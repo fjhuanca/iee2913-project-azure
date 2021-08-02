@@ -10,6 +10,7 @@
 {% block content %}
     
     <script src= {% static 'assets/js/vital_signs.js' %}></script>
+    <script src= {% static 'assets/js/request.js' %}></script>
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center py-4">
         <div class="btn-toolbar dropdown">
             <button class="btn btn-dark btn-sm me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -27,6 +28,9 @@
             <!-- <button type="button" class="btn btn-sm btn-outline-primary">Share</button> -->
             <!-- <button type="button" class="btn btn-sm btn-outline-primary">Export</button> -->
         <!-- </div> -->
+    </div>
+    <div class=" flex-wrap flex-md-nowrap  py-4 text-right">
+        <button type="button" class="btn btn-warning btn-lg pull-right" onclick="sendUpdate(1)">Solicitar al Paciente</button>
     </div>
     <div class="row justify-content-md-center">
         <div class="col-12 mb-4">

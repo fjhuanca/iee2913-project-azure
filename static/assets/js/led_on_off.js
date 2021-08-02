@@ -23,6 +23,10 @@
     const checkbox = document.getElementById("toggle");
     checkbox.onchange = function (event){
         val =  ($('#toggle').prop('checked')) ? 1: 0;
-        if (socket2.readyState) socket2.send(JSON.stringify({led: val, new_message: 0}));
+        if (socket2.readyState) socket2.send(JSON.stringify({led: val, new_message: 0, action_request:0}));
         // console.log("here");
     };
+
+    function sendUpdate2(value){
+        socket2.send(JSON.stringify({led: 0, new_message: 0, action_request:value}))
+    }
