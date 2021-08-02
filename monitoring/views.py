@@ -5,6 +5,8 @@ from communication.models import DrugRecord, Message, FoodRecord, EvacuationReco
 from django.forms.models import model_to_dict
 import mutagen
 from django.utils import timezone
+import websocket
+import json
 import pytz
 # Create your views here.
 
@@ -23,6 +25,10 @@ def messages_page(request):
         if message_form.is_valid():
             message = message_form.save(commit=False)
             message.save()
+            ws_info = websocket.WebSocket()
+            ws_info.connect('wss://localhost:8000/wss/receiver/info/')
+            ws_info.send(json.dumps({"led": 0, "new_message": 1}))
+            ws_info.close()
             return redirect('messages')
     else:
         message_form = MessageForm
@@ -45,11 +51,11 @@ def evacuation_page(request):
     data = EvacuationRecord.objects.all()
     return render(request, "registro_evacuaciones.html", {'records_data': data})
 
-
+@login_required(login_url="login")
 def chart_test(request):
     return render(request, "chart_test.html")
 
-
+@login_required(login_url="login")
 def audio_form_test(request):
     if request.method == "POST":
         audio_form = AudioForm(request.POST, request.FILES)
@@ -63,6 +69,7 @@ def audio_form_test(request):
         audio_form = AudioForm
     return render(request, "audio_test.html", {'form': audio_form})
 
+@login_required(login_url="login")
 def audio_player(request):
         audios = reversed(Audio.objects.all())
         base_url =  "{0}://{1}{2}".format(request.scheme, request.get_host(),"")

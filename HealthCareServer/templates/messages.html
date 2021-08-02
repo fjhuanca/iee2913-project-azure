@@ -41,7 +41,7 @@
                         <div class="h5 fw-normal mb-2">Nuevo Mensaje</div>
                         <form method="POST" class="post-form">{% csrf_token %}
                             {{ form.as_p }}
-                            <button onclick="sendUpdate()" type="submit" class="btn btn-sm btn-outline-primary">Enviar</button>
+                            <button onsubmit="sendUpdate()" type="submit" class="btn btn-sm btn-outline-primary">Enviar</button>
                         </form> 
                         </div>
                     </div>

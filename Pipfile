@@ -16,6 +16,7 @@ django-heroku = "*"
 daphne = "*"
 psycopg2 = "*"
 mutagen = "*"
+websocket = "*"
 
 [dev-packages]
 
