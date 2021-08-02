@@ -26,7 +26,7 @@ def messages_page(request):
             message = message_form.save(commit=False)
             message.save()
             ws_info = websocket.WebSocket()
-            ws_info.connect('wss://localhost:8000/wss/receiver/info/')
+            ws_info.connect('ws://localhost:8000/wss/receiver/info/')
             ws_info.send(json.dumps({"led": 0, "new_message": 1}))
             ws_info.close()
             return redirect('messages')
