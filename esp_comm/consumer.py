@@ -268,13 +268,15 @@ class InfoConsumerReceiver(AsyncWebsocketConsumer):
         datapoint = json.loads(text_data)
         led = datapoint['led']
         nm = datapoint['new_message']
+        sc = datapoint['action_request']
         
         await self.channel_layer.group_send(
             "info_sender",
             {
                 'type': 'deprocessing',
                 'led': led,
-                'new_message': nm
+                'new_message': nm,
+                'action_request': sc
             }
         )
         # print('>>>', text_data)
