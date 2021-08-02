@@ -245,8 +245,9 @@ class LedConsumerSender(AsyncWebsocketConsumer):
         pass
 
     async def deprocessing(self, event):
-        valOther = event['status']
-        await self.send(text_data=str(valOther))
+        new_dict = {k : v for k,v in event.items() if k!='type'}
+        # print(new_dict)
+        await self.send(text_data=json.dumps(new_dict))
 
 
 class LedConsumerReceiver(AsyncWebsocketConsumer):
@@ -265,13 +266,13 @@ class LedConsumerReceiver(AsyncWebsocketConsumer):
 
     async def receive(self, text_data):
         datapoint = json.loads(text_data)
-        val = datapoint['status']
+        led = datapoint['led']
         
         await self.channel_layer.group_send(
             "led_sender",
             {
                 'type': 'deprocessing',
-                'status': val
+                'led': led
             }
         )
         # print('>>>', text_data)

@@ -10,11 +10,14 @@ socket_signs.onmessage = function(e){
     // console.log(e.data);
     var recData = JSON.parse(e.data);
     document.getElementById("bpm_inst").innerHTML = recData.bpm + "(LPM)";
-    document.getElementById("temp_inst").innerHTML = recData.temp + "°C";
+    document.getElementById("temp_inst").innerHTML = roundToTwo(recData.temp) + "°C";
     document.getElementById("spo_inst").innerHTML = recData.spo + "%";
     document.getElementById("bf_inst").innerHTML = recData.bf + " BPM";
 };
 
+function roundToTwo(num) {    
+    return +(Math.round(num + "e+2")  + "e-2");
+}
 // socket.onclose = function(e){
 //     alert("Desconectado");
 // };
