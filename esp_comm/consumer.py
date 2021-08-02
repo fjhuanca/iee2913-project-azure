@@ -227,9 +227,9 @@ class CamConsumerSender(AsyncWebsocketConsumer):
         # print(new_dict)
         await self.send(bytes_data=event["bytes"])
 
-class LedConsumerSender(AsyncWebsocketConsumer):
+class InfoConsumerSender(AsyncWebsocketConsumer):
     
-    groupname = 'led_sender'
+    groupname = 'info_sender'
     async def connect(self):
         await self.channel_layer.group_add(
             self.groupname,
@@ -250,9 +250,9 @@ class LedConsumerSender(AsyncWebsocketConsumer):
         await self.send(text_data=json.dumps(new_dict))
 
 
-class LedConsumerReceiver(AsyncWebsocketConsumer):
+class InfoConsumerReceiver(AsyncWebsocketConsumer):
     
-    groupname = 'led_receiver'
+    groupname = 'info_receiver'
     async def connect(self):
         await self.channel_layer.group_add(
             self.groupname,
@@ -267,12 +267,14 @@ class LedConsumerReceiver(AsyncWebsocketConsumer):
     async def receive(self, text_data):
         datapoint = json.loads(text_data)
         led = datapoint['led']
+        nm = datapoint['new_message']
         
         await self.channel_layer.group_send(
             "led_sender",
             {
                 'type': 'deprocessing',
-                'led': led
+                'led': led,
+                'new_message': nm
             }
         )
         # print('>>>', text_data)
