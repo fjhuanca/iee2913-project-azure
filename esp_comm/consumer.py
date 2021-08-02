@@ -270,7 +270,7 @@ class InfoConsumerReceiver(AsyncWebsocketConsumer):
         nm = datapoint['new_message']
         
         await self.channel_layer.group_send(
-            "led_sender",
+            "info_sender",
             {
                 'type': 'deprocessing',
                 'led': led,

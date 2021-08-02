@@ -6,11 +6,11 @@
         
     socket2 = new WebSocket(
             (window.location.protocol == 'https:' ? 'wss://' : 'wss://')
-                + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/receiver/led/');
+                + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/receiver/info/');
 
     socket3 = new WebSocket(
                     (window.location.protocol == 'https:' ? 'wss://' : 'wss://')
-                        + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/sender/led/');
+                        + 'iee2913-g10-project.southcentralus.cloudapp.azure.com/wss/sender/info/');
     socket3.onmessage = function(e){
         // console.log(e.data);
         var recData = JSON.parse(e.data)
