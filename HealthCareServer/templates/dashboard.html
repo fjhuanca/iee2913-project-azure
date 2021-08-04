@@ -42,7 +42,7 @@
                         <div class="small mt-2"> 
                             <span class="fw-bold me-2">Estado:</span>                              
                             <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                            <span class="text-success fw-bold">Monitoreando</span>
+                            <span class="text-danger fw-bold" id="status-bpm">Esperando</span>
                         </div>
                     </div>
                     <!-- <div class="d-flex ms-auto">
@@ -53,6 +53,12 @@
                 <div class="card-body p-2">
                     <!-- <div class="ct-chart-sales-value ct-double-octave ct-series-g"></div> -->
                     {% include 'line_chart.html' %}
+                    <div class="small mt-2">                               
+                    Estado: 
+                        <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
+                        <!-- <span class="text-success fw-bold">0°C</span> -->
+                        <span class="text-danger fw-bold " id="status-ecg"> Esperando </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -72,15 +78,16 @@
                         <div class="col-12 col-xl-7 px-xl-0">
                             <div class="d-none d-sm-block">
                                 <h2 class="h5">Temperatura</h2>
-                                <h3 class="mb-1", id="temp_inst">0°C</h3>
+                                <h3 class="mb-1", id="temp_inst">-°C</h3>
                             </div>
-                            <small>Promedio Último Minuto:
+                            <small>Estado:
                                 <!-- <span class="icon icon-small">
                                 <span class="fas fa-globe-europe"></span></span>  -->
                                 </small> 
                             <div class="small mt-2">                               
                                 <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                                <span class="text-success fw-bold">0°C</span>
+                                <!-- <span class="text-success fw-bold">0°C</span> -->
+                                <span class="text-danger fw-bold " id="status-temp"> Esperando </span>
                             </div>
                         </div>
                     </div>
@@ -103,14 +110,15 @@
                         <div class="col-12 col-xl-7 px-xl-0">
                             <div class="d-none d-sm-block">
                                 <h2 class="h5">Saturación</h2>
-                                <h3 class="mb-1", id="spo_inst">0%</h3>
+                                <h3 class="mb-1", id="spo_inst">-%</h3>
                             </div>
-                            <small>Promedio  
+                            <small>  
                                 <!-- <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span>  -->
-                                Último Minuto:</small>
+                                Estado:</small>
                             <div class="small mt-2">                               
                                 <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                                <span class="text-success fw-bold">0%</span>
+                                <!-- <span class="text-success fw-bold">0%</span> -->
+                                <span class="text-danger fw-bold " id="status-spo"> Esperando </span>
                             </div>
                         </div>
                     </div>
@@ -132,14 +140,15 @@
                             <h6 class="fw-normal text-gray"><span class="icon w-20 icon-xs icon-tertiary me-1"><span class="fas fa-tablet-alt"></span></span> Tablet Web <a href="#" class="h6">10%</a></h6> -->
                                 <div class="d-none d-sm-block">
                                     <h2 class="h5">Frec. Respiratoria</h2>
-                                    <h3 class="mb-1", id="bf_inst">0 BPM</h3>
+                                    <h3 class="mb-1", id="bf_inst">- BPM</h3>
                                 </div>
-                                <small>Promedio  
+                                <small>  
                                     <!-- <span class="icon icon-small"><span class="fas fa-globe-europe"></span></span>  -->
-                                    Último Minuto:</small>
+                                    Estado:</small>
                                 <div class="small mt-2">                               
                                     <!-- <span class="fas fa-angle-up text-success"></span>                                    -->
-                                    <span class="text-success fw-bold">0</span>
+                                    <!-- <span class="text-success fw-bold">0</span> -->
+                                    <span class="text-danger fw-bold " id="status-bf"> Esperando </span>
                                 </div>
                         
                         </div>
