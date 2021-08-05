@@ -67,11 +67,11 @@ var dataObj = {
     data: {
         labels: [...(Array(100).fill('')).values()],
         datasets: [{
-            label: 'ECG 2 canales',
+            label: 'Electrocardiograma',
             data: [...(Array(100).fill(0)).values()],
             backgroundColor: ['rgba(255, 99, 132, 0.5)', ],
             borderColor: ['rgba(255, 99, 132, 1)', ],
-            borderWidth: 1
+            borderWidth: 2
         }]
     },
     options: {
@@ -79,6 +79,11 @@ var dataObj = {
         scales: {
             y: {
                 beginAtZero: true
+            }
+        },
+        elements: {
+            point:{
+                radius: 0
             }
         }
     }
