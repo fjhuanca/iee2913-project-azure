@@ -9,6 +9,7 @@ socket.onopen = function(e){
 
 ecg_val = {
     valueInternal: -1,
+    pastValue: -1,
     valueListener: function(val) {},
     set value(val) {
       this.pastValue = this.valueInternal;
