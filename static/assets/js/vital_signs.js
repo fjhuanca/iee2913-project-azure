@@ -142,7 +142,7 @@ socket_signs.onmessage = function(e){
     }
 
     if (spo.value >= 0){
-        document.getElementById("spo_inst").innerHTML = spo.value + "°%";
+        document.getElementById("spo_inst").innerHTML = spo.value + "%";
     }
     else if (spo.value < 0){
         document.getElementById("spo_inst").innerHTML = "-" + "%";
