@@ -40,8 +40,8 @@ jQuery(function($){
                     receiving = false;
                     var img = document.getElementById('live');
                     img.src = 'data:image/jpg;base64,'+window.btoa(binary);
-                    img.style.width = '25%'
-                    img.style.height = '25%'
+                    img.style.width = '30%'
+                    img.style.height = '30%'
                 }
                 else if (receiving){
                     for (var i = 0; i < len; i++) {
