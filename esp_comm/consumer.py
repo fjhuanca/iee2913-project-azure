@@ -190,7 +190,14 @@ class CamConsumerReceiver(AsyncWebsocketConsumer):
         pass
 
     async def receive(self, bytes_data):
-        
+        await self.channel_layer.group_send(
+            "cam",
+            {
+                'type': 'deprocessing',
+                'state': 1
+            }
+        )
+
         await self.channel_layer.group_send(
             "cam2",
             {
@@ -202,7 +209,7 @@ class CamConsumerReceiver(AsyncWebsocketConsumer):
         
 
     async def deprocessing(self, event):
-        pass
+        await self.send(bytes_data=event["state"])
 
 
 class CamConsumerSender(AsyncWebsocketConsumer):
