@@ -209,7 +209,7 @@ class CamConsumerReceiver(AsyncWebsocketConsumer):
         
 
     async def deprocessing(self, event):
-        await self.send(bytes_data=event["state"])
+        await self.send(bytes_data=bytes([0]))
 
 
 class CamConsumerSender(AsyncWebsocketConsumer):
