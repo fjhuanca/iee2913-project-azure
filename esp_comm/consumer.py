@@ -194,7 +194,7 @@ class CamConsumerReceiver(AsyncWebsocketConsumer):
             "cam",
             {
                 'type': 'deprocessing',
-                'state': 1
+                'state': bytearray(1)
             }
         )
 
